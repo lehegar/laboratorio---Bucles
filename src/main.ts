@@ -123,4 +123,42 @@ console.log(reasignaPacientesAMedicoFamilia(pacientes));
 
 // PACIENTES EN PEDIATRIA //
 
+const HayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
+  return pacientes.every((paciente) => paciente.especialidad === "Pediatra");
+};
+
+console.log(HayPacientesDePediatria(pacientes));
+
 // PACIENTES POR ESPECIALIDAD //
+
+interface NumeroPacientesPorEspecialidad {
+  medicoDeFamilia: number;
+  pediatria: number;
+  cardiologia: number;
+}
+
+const cuentaPacientesPorEspecialidad = (
+  pacientes: Pacientes[]
+): NumeroPacientesPorEspecialidad => {
+  let contadorEspecialidades: NumeroPacientesPorEspecialidad = {
+    medicoDeFamilia: 0,
+    pediatria: 0,
+    cardiologia: 0,
+  };
+
+  pacientes.forEach((paciente) => {
+    const esp = paciente.especialidad;
+
+    if (esp === "Medico de familia") {
+      contadorEspecialidades.medicoDeFamilia += 1;
+    } else if (esp === "Pediatra") {
+      contadorEspecialidades.pediatria += 1;
+    } else if (esp === "Cardiólogo") {
+      contadorEspecialidades.cardiologia += 1;
+    }
+  });
+
+  return contadorEspecialidades;
+};
+
+console.log(cuentaPacientesPorEspecialidad(pacientes));
