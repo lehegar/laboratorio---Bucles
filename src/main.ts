@@ -158,3 +158,5 @@ const cuentaPacientesPorEspecialidad = (
 };
 
 console.log(cuentaPacientesPorEspecialidad(pacientes));
+
+//
