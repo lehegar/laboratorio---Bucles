@@ -89,19 +89,15 @@ console.log(obtenPacientesAsignadosAPediatria(pacientes));
 //100 PPM Y 39° TEMPERATURA //
 
 const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
-  let activarProctolo = false;
-  pacientes.forEach((paciente) => {
-    if (paciente.frecuenciaCardiaca >= 100 && paciente.temperatura >= 39) {
-      activarProctolo = true;
-    }
-  });
-  return activarProctolo;
+  let activarProtocolo = pacientes.some(
+    (paciente) =>
+      paciente.temperatura >= 39 && paciente.frecuenciaCardiaca >= 100
+  );
+
+  return activarProtocolo;
 };
 
-console.log(
-  "Activar protocolo de urgencia:",
-  activarProtocoloUrgencia(pacientes)
-);
+console.log(activarProtocoloUrgencia(pacientes));
 
 // PEDIATRIA A MEDICO DE FAMILIA //
 
